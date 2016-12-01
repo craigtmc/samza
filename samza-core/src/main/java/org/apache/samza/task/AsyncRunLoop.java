@@ -102,7 +102,7 @@ public class AsyncRunLoop implements Runnable {
       Map<TaskName, TaskInstance<AsyncStreamTask>> taskInstances, Map<TaskName, AsyncTaskWorker> taskWorkers) {
     Map<SystemStreamPartition, List<AsyncTaskWorker>> sspToWorkerMap = new HashMap<>();
     for (TaskInstance<AsyncStreamTask> task : taskInstances.values()) {
-      Set<SystemStreamPartition> ssps = JavaConversions.asJavaSet(task.systemStreamPartitions());
+      Set<SystemStreamPartition> ssps = JavaConversions.setAsJavaSet(task.systemStreamPartitions());
       for (SystemStreamPartition ssp : ssps) {
         if (sspToWorkerMap.get(ssp) == null) {
           sspToWorkerMap.put(ssp, new ArrayList<AsyncTaskWorker>());
